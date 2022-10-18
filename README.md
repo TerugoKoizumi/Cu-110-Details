@@ -1,1 +1,1 @@
-https://terugokoizumi.github.io/Cu-110-Details/
+https://terugokoizumi.github.io/Cu-110-Details/ 
