@@ -79,3 +79,48 @@ Starting wfcs are  600 randomized atomic wfcs
 
 ```
 と記載があるのでバンド数は640ぐらいで良いのかなと考えています。
+
+<br>
+
+追記　
+
+電子の数
+```
+number of electrons       =      1140.00
+```
+
+k点の数
+```
+    number of k points=     6  Methfessel-Paxton smearing, width (Ry)=  0.0200
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0000000   0.0000000   0.0000000), wk =   0.1666667
+        k(    2) = (   0.0000000   0.2946278   0.0000000), wk =   0.3333333
+        k(    3) = (   0.0000000  -0.5892557   0.0000000), wk =   0.1666667
+        k(    4) = (   0.3333333   0.0000000   0.0000000), wk =   0.3333333
+        k(    5) = (   0.3333333   0.2946278   0.0000000), wk =   0.6666667
+        k(    6) = (   0.3333333  -0.5892557   0.0000000), wk =   0.3333333
+```
+
+<br>
+
+ジョブスクリプト
+
+```
+#!/bin/sh
+#SBATCH -J Cu_sf_vdW
+#SBATCH -p i8cpu
+#SBATCH -N 8
+#SBATCH -n 256
+
+
+module load intel_compiler/2020.4.304
+module load intel_mpi/2020.4.304
+#
+INPUT_FILE='cu.in'
+OUTPUT_FILE='cu.out'
+#
+
+ln -fs /home/k0227/k022707/QE/src/qe-6.8/bin/pw.x ./pw.x
+
+srun ./pw.x < ${INPUT_FILE} > ${OUTPUT_FILE}
+```
